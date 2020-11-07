@@ -6,7 +6,7 @@ This is a project for the UCR Cutie Hack 2020.
 
 It is a Pomodoro study timer.
 
-####Hardware:
+#### Hardware:
 - Raspberry Pi Zero
 - LCD Screen
 - 4 Buttons
@@ -16,14 +16,14 @@ It is a Pomodoro study timer.
     - this link will be active in 24 hours, darn
     - I will put a picture here when it's done printing
 
-####Software:
+#### Software:
 - Python
 - crontab, just for fun
 
-#####Resources
+##### Resources
 - Raspberry Pi to LCD stuff
     - https://learn.adafruit.com/character-lcds/python-circuitpython
     
-###Requirements
+### Requirements
 - https://learn.adafruit.com/circuitpython-on-raspberrypi-linux/installing-circuitpython-on-raspberry-pi \
-'sudo pip3 install adafruit-circuitpython-charlcd'
+- `sudo pip3 install adafruit-circuitpython-charlcd`
