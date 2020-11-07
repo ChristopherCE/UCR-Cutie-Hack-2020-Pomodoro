@@ -55,6 +55,7 @@ class Pomodoro:
     def start(self):
         lcd.clear()
         lcd.message = "POMODORO\nButton: 1-4"
+        time.sleep(3)
 
     def study(self):
         while self.long_study:
@@ -94,7 +95,7 @@ class Pomodoro:
 
 
 def main():
-    p = Pomodoro
+    p = Pomodoro()
     p.start()
 
 
