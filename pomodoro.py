@@ -57,13 +57,13 @@ class Pomodoro:
         lcd.clear()
         lcd.message = "POMODORO \x01\nButton: 1-4"
         while True:
-            if btn0.value:
+            if not btn0.value:
                 self.study()
-            elif btn1.value:
+            elif not btn1.value:
                 self.shortBreak()
-            elif btn2.value:
+            elif not btn2.value:
                 self.longBreak()
-            elif btn3.value:
+            elif not btn3.value:
                 self.reset()
 
     def study(self):
@@ -74,7 +74,7 @@ class Pomodoro:
             lcd.message = timer
             time.sleep(1)
             self.long_study -= 1
-            if btn3.value:
+            if not btn3.value:
                 self.reset()
         lcd.clear()
         lcd.message = "Time is up!"
@@ -89,7 +89,7 @@ class Pomodoro:
             lcd.message = timer
             time.sleep(1)
             self.short_break -= 1
-            if btn3.value:
+            if not btn3.value:
                 self.reset()
         lcd.clear()
         lcd.message = "Time is up!"
@@ -104,7 +104,7 @@ class Pomodoro:
             lcd.message = timer
             time.sleep(1)
             self.long_break -= 1
-            if btn3.value:
+            if not btn3.value:
                 self.reset()
         lcd.clear()
         lcd.message = "Time is up!"
@@ -115,9 +115,9 @@ class Pomodoro:
         lcd.clear()
         lcd.message = "Hold Button 4 to end."
         time.sleep(1)
-        if btn3.value:
+        if not btn3.value:
             time.sleep(1)
-            if btn3.value:
+            if not btn3.value:
                 self.stop()
         else:
             self.long_study = 1500
