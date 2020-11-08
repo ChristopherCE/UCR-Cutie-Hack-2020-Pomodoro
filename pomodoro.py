@@ -51,15 +51,20 @@ class Pomodoro:
         self.long_study = 1500
         self.short_break = 300
         self.long_break = 900
+        lcd.create_char(1, [0, 2, 4, 14, 17, 17, 17, 14])
 
     def start(self):
         lcd.clear()
-        lcd.message = "POMODORO\nButton: 1-4"
-        time.sleep(3)
-        lcd.clear()
-        lcd.create_char(1, [0, 2, 4, 14, 17, 17, 17, 14])
-        lcd.message = "\x01"
-        time.sleep(3)
+        lcd.message = "POMODORO \x01\nButton: 1-4"
+        while True:
+            if btn0.value:
+                self.study()
+            elif btn1.value:
+                self.shortBreak()
+            elif btn2.value:
+                self.longBreak()
+            elif btn3.value:
+                self.reset()
 
     def study(self):
         while self.long_study:
@@ -69,6 +74,12 @@ class Pomodoro:
             lcd.message = timer
             time.sleep(1)
             self.long_study -= 1
+            if btn3.value:
+                self.reset()
+        lcd.clear()
+        lcd.message = "Time is up!"
+        time.sleep(3)
+        self.start()
 
     def shortBreak(self):
         while self.short_break:
@@ -78,6 +89,12 @@ class Pomodoro:
             lcd.message = timer
             time.sleep(1)
             self.short_break -= 1
+            if btn3.value:
+                self.reset()
+        lcd.clear()
+        lcd.message = "Time is up!"
+        time.sleep(3)
+        self.start()
 
     def longBreak(self):
         while self.long_break:
@@ -87,15 +104,33 @@ class Pomodoro:
             lcd.message = timer
             time.sleep(1)
             self.long_break -= 1
+            if btn3.value:
+                self.reset()
+        lcd.clear()
+        lcd.message = "Time is up!"
+        time.sleep(3)
+        self.start()
 
     def reset(self):
         lcd.clear()
-        self.long_study = 1500
-        self.short_break = 300
-        self.long_break = 900
+        lcd.message = "Hold Button 4 to end."
+        time.sleep(1)
+        if btn3.value:
+            time.sleep(1)
+            if btn3.value:
+                self.stop()
+        else:
+            self.long_study = 1500
+            self.short_break = 300
+            self.long_break = 900
+            self.start()
 
     def stop(self):
         lcd.clear()
+        lcd.message = "Goodbye!"
+        time.sleep(1)
+        lcd.clear()
+        exit()
 
 
 def main():
@@ -105,19 +140,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-# test it up
-'''
-while True:
-    if btn0.value is False:
-        lcd.clear()
-        lcd.message = "BUTTON ON"
-        print("BUTTON ON")  # debugging
-        time.sleep(0.2)
-    else:
-        lcd.clear()
-        lcd.message = "BUTTON OFF"
-        print("BUTTON OFF")  # debugging
-        time.sleep(0.2)
-'''
