@@ -50,7 +50,7 @@ class Pomodoro:
         # btn_3 = 3
         self.long_study = 1500
         self.short_break = 300
-        self.long_break = 900
+        self.long_break = 600
         lcd.create_char(1, [0, 2, 4, 14, 17, 17, 17, 14])
 
     def start(self):
@@ -113,8 +113,8 @@ class Pomodoro:
 
     def reset(self):
         lcd.clear()
-        lcd.message = "Hold Button 4 to end."
-        time.sleep(1)
+        lcd.message = "Hold Button 4\nto end."
+        time.sleep(3)
         if not btn3.value:
             time.sleep(1)
             if not btn3.value:
@@ -122,13 +122,13 @@ class Pomodoro:
         else:
             self.long_study = 1500
             self.short_break = 300
-            self.long_break = 900
+            self.long_break = 600
             self.start()
 
     def stop(self):
         lcd.clear()
         lcd.message = "Goodbye!"
-        time.sleep(1)
+        time.sleep(3)
         lcd.clear()
         exit()
 
