@@ -1,11 +1,11 @@
-'''
+"""
 UCR Cutie Hack 2020
 
 Pomodoro Study Timer
 
 Programmer: Christopher Alexman
 Date: 11/07/2020
-'''
+"""
 
 import time
 import board
@@ -56,6 +56,10 @@ class Pomodoro:
         lcd.clear()
         lcd.message = "POMODORO\nButton: 1-4"
         time.sleep(3)
+        lcd.clear()
+        lcd.create_char(1, [0, 2, 4, 14, 17, 17, 17, 14])
+        lcd.message = "\x01"
+        time.sleep(3)
 
     def study(self):
         while self.long_study:
@@ -95,8 +99,8 @@ class Pomodoro:
 
 
 def main():
-    p = Pomodoro()
-    p.start()
+    pomodoro = Pomodoro()
+    pomodoro.start()
 
 
 if __name__ == "__main__":
